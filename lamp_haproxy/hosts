@@ -1,0 +1,10 @@
+[webservers]
+web01
+web02
+web03
+
+[lbservers]
+haproxy01
+
+[dbservers]
+db01

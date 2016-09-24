@@ -1,0 +1,12 @@
+---
+# Handlers for HAproxy
+
+- name: restart haproxy
+  become: yes
+  become_method: sudo
+  service: name=haproxy state=restarted
+
+- name: reload haproxy
+  become: yes
+  become_method: sudo
+  service: name=haproxy state=reloaded

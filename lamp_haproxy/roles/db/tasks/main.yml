@@ -1,0 +1,54 @@
+---
+# This role will install MySQL and create db user and give permissions.
+
+#- name: Install Mysql package
+- name: Install Mariadb package
+  become: yes
+  become_method: sudo
+  yum: name={{ item }} state=present
+  with_items:
+#   - mysql-server
+   - mariadb-server
+   - MySQL-python
+
+#- name: Configure SELinux to start mysql on any port
+- name: Configure SELinux to start Mariadb on any port
+  become: yes
+  become_method: sudo
+  seboolean: name=mysql_connect_any state=true persistent=yes
+  when: sestatus.rc != 0
+
+#- name: Create Mysql configuration file
+- name: Create Mariadb configuration file
+  become: yes
+  become_method: sudo
+  template: src=my.cnf.j2 dest=/etc/my.cnf
+  notify:
+  - restart mysql
+
+#- name: Start Mysql Service
+- name: Start Mariadb Service
+  become: yes
+  become_method: sudo
+#  service: name=mysqld state=started enabled=yes
+  service: name=mariadb state=started enabled=yes
+
+- name: Create Application Database
+  become: yes
+  become_method: sudo
+  mysql_db: name={{ dbname }} state=present
+
+- name: Create Application DB User
+  become: yes
+  become_method: sudo
+  mysql_user: name={{ dbuser }} password={{ upassword }} priv=*.*:ALL host='%' state=present
+
+- name: Open firewalld port 3306 in running configuration
+  become: yes
+  become_method: sudo
+  firewalld: zone=public port=3306/tcp permanent=false state=enabled
+
+- name: Open firewalld port 3306 in permanent configuration
+  become: yes
+  become_method: sudo
+  firewalld: zone=public port=3306/tcp permanent=true state=enabled
