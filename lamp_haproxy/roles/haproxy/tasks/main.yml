@@ -1,0 +1,33 @@
+---
+# This role installs HAProxy and configures it.
+
+- name: Download and install haproxy
+  become: yes
+  become_method: sudo
+  yum: name=haproxy state=present
+
+- name: Configure the haproxy cnf file with hosts
+  become: yes
+  become_method: sudo
+  template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+  notify: restart haproxy
+
+- name: Start the haproxy service
+  become: yes
+  become_method: sudo
+  service: name=haproxy state=started enabled=yes
+
+- name: Open firewalld port 8888 in running configuration
+  become: yes
+  become_method: sudo
+  firewalld: zone=public port=8888/tcp permanent=false state=enabled
+
+- name: Open firewalld port 8888 in permanent configuration
+  become: yes
+  become_method: sudo
+  firewalld: zone=public port=8888/tcp permanent=true state=enabled
+ 
+- name: Setsebool for haproxy
+  become: yes
+  become_method: sudo
+  seboolean: name=haproxy_connect_any state=yes persistent=yes
