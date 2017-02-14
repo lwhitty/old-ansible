@@ -14,4 +14,4 @@ iface: '{{ ansible_default_ipv4.interface }}'
 #repository: https://github.com/bennojoy/mywebapp.git
 repository: https://github.com/lwhitty/webapp.git
 # this is the sha1sum of V5 of the test webapp.
-webapp_version: 6cd26e5fbcb21982a5d6f7943b6ca7dbc18c9643
+webapp_version: HEAD
