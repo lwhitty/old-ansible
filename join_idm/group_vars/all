@@ -1,7 +1,1 @@
-#ipa_client_install: "ipa-client-install -U"
-vault_ipa_admin_user: admin
-vault_ipa_admin_password: a1w1mp0m!
-ipa_server: idm01.home.whitty.org
-ansible_domain: home.whitty.org
-ipa_realm: HOME.WHITTY.ORG
-ipa_user_home: ipauserhome
+
