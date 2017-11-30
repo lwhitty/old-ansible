@@ -1,8 +1,0 @@
----
-# Handlers for common
-
-- name: restart sssd
-  service: name=sssd state=restarted
-
-- name: restart autofs
-  service: name=autofs state=restarted
