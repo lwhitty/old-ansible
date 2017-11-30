@@ -1,2 +1,0 @@
-# Must be run as root:
-sudo ansible-playbook -i hosts site.yml --ask-pass
