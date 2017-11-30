@@ -1,0 +1,47 @@
+---
+# This role contains common plays that will run on all nodes.
+- name: Install ipa-client packages
+  yum: name=ipa-client state=present
+
+- name: Check to see if /etc/sssd/sssd.conf exists
+  stat: path=/etc/sssd/sssd.conf
+  register: ipa_client_registered
+
+- name: Enroll IPA client to IPA server unattended
+  command:
+    ipa-client-install -U
+    -p {{ vault_ipa_admin_user }}
+    -w {{ vault_ipa_admin_password }}
+    --no-dns-sshfp
+    --hostname={{ ansible_fqdn }}
+    --server {{ ipa_server }}
+    --domain {{ ansible_domain }}
+    --realm {{ ipa_realm }}
+  when: ipa_client_registered.stat.exists == False
+
+- name: Set up IPA client automount
+  command: ipa-client-automount --server={{ ipa_server }} --location={{ ipa_user_home }} -U
+
+- name: Configure automounter in /etc/nsswitch.conf on RHEL 7 systems
+  replace:
+    path: /etc/nsswitch.conf
+    regexp: '(\s+)automount\:\ \ files(\s+.*)?$'
+    replace: '\1automount:  sss files\2'
+    backup: yes
+  when: ansible_distribution_major_version == '7'
+  notify: restart autofs
+
+- name: Configure sudoers in /etc/nsswitch.conf on RHEL 7 systems
+  replace:
+    path: /etc/nsswitch.conf
+    regexp: '(\s+)sudoers\:\ files\ sss(\s+.*)?$'
+    replace: '\1sudoers: sss files\2'
+    backup: yes
+  when: ansible_distribution_major_version == '7'
+  notify: restart sssd
+
+- name: Start rpcbind on RHEL 6 systems
+  service:
+    name: rpcbind
+    state: restarted
+  when: ansible_distribution_major_version != '7'

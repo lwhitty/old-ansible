@@ -1,0 +1,11 @@
+[dev]
+dev601.home.whitty.org
+dev701.home.whitty.org
+
+[test]
+test601.home.whitty.org
+test701.home.whitty.org
+
+[prod]
+prod601.home.whitty.org
+prod701.home.whitty.org
