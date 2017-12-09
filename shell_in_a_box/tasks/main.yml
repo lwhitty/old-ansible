@@ -1,0 +1,39 @@
+- name: Install EPEL
+  yum:
+    name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+    state: present
+  tags:
+    - control_node
+    - control
+
+- name: Install Shell In A Box
+  yum:
+    name:
+      - shellinabox
+      - openssl
+    state: present
+
+- name: Set Shell In A Box port
+  lineinfile:
+    path:  /etc/sysconfig/shellinaboxd
+    regexp: '^PORT='
+    line: 'PORT={{ siab_port }}'
+
+- name: Open Shell In A Box firewall port
+  firewalld:
+    immediate: yes
+    permanent: yes
+    port: '{{ siab_port }}/tcp'
+    state: enabled
+
+- name: Disable SELinux (workaround until SELinux policy creation is automated)
+  selinux:
+    policy: targeted
+    state: permissive  
+
+- name: Enable and start/restart Shell In A Box
+  systemd:
+    name: shellinaboxd
+    state: restarted
+    enabled: yes
+
