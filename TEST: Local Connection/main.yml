@@ -2,13 +2,11 @@
 - hosts: localhost
   gather_facts: no
   connection: ssh
-  become: yes
   tasks:
     - command: whoami
       register: whoami
     - command: 'cat /root/.ssh/test_id_rsa'
       register: testrsa
-      
       
     - debug:
         var: whoami.stdout
