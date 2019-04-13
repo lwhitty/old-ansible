@@ -2,7 +2,7 @@
 - hosts: localhost
   gather_facts: no
   connection: ssh
-  become: root
+  become: yes
   tasks:
     - command: whoami
       register: whoami
