@@ -12,4 +12,5 @@
       
     - debug:
         var: whoami.stdout
+    - debug:
         var: testrsa.stdout
