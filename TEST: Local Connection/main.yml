@@ -5,7 +5,11 @@
   become: yes
   tasks:
     - command: whoami
-      become: yes
       register: whoami
+    - command: 'cat /root/.ssh/test_id_rsa'
+      register: testrsa
+      
+      
     - debug:
         var: whoami.stdout
+        var: testrsa.stdout
