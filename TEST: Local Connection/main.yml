@@ -3,6 +3,7 @@
   gather_facts: no
   connection: ssh
   become: yes
+  become_user: root
   tasks:
     - command: whoami
       register: whoami
