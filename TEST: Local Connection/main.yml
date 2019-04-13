@@ -1,5 +1,5 @@
 ---
-- hosts: ansible01
+- hosts: localhost
   gather_facts: no
   connection: ssh
   tasks:
