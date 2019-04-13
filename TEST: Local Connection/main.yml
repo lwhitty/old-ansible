@@ -3,6 +3,9 @@
   gather_facts: no
   connection: ssh
   become: yes
+  become_method: sudo
+  remote_user: root
+  ansible_user: root
   tasks:
     - command: whoami
       register: whoami
