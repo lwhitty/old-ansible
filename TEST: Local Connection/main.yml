@@ -2,12 +2,12 @@
 - hosts: localhost
   gather_facts: no
   connection: ssh
-  become: yes
-  become_user: root
   tasks:
     - command: whoami
       register: whoami
     - command: 'cat /root/.ssh/test_id_rsa'
+      become: yes
+      become_method: su
       register: testrsa
       
     - debug:
