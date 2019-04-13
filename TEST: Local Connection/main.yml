@@ -5,7 +5,7 @@
   tasks:
     - command: whoami
       register: whoami
-    - command: 'cat /root/.ssh/test_id_rsa'
+    - command: 'sudo cat /root/.ssh/test_id_rsa'
       register: testrsa
       
     - debug:
