@@ -5,6 +5,7 @@
   become: yes
   tasks:
     - command: whoami
+      become: yes
       register: whoami
     - debug:
         var: whoami.stdout
