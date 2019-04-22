@@ -5,9 +5,9 @@
   connection: local
   vars:
     provider:
-      password: "{{ password }}"
+      password: admin
       server: 192.168.132.108
-      user: "{{ username }}"
+      user: admin
       validate_certs: False
 
   tasks:
