@@ -5,9 +5,9 @@
   connection: local
   vars:
     provider:
-      password: "{{ bigip_password }}"
+      password: "{{ ansible_env.ANSIBLE_NET_PASSWORD }}"
       server: "{{ ansible_host }}"
-      user: "{{ bigip_username }}"
+      user: "{{ ansible_env.ANSIBLE_NET_USERNAME }}"
       validate_certs: False
 
   tasks:
