@@ -5,9 +5,9 @@
   connection: local
   vars:
     provider:
-      password: "{{ ANSIBLE_NET_PASSWORD }}"
+      password: "{{ BIGIP_PASSWORD }}"
       server: 192.168.132.108
-      username: "{{ ANSIBLE_NET_USERNAME }}"
+      user: "{{ BIGIP_USERNAME }}"
       validate_certs: False
 
   tasks:
