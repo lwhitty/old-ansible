@@ -8,7 +8,7 @@
 #      password: "{{ bigip_password }}"
 #      server: "{{ ansible_host }}"
 #      user: "{{ bigip_username }}"
-      validate_certs: False
+#      validate_certs: False
 
   tasks:
     - name: Collect bigip facts
