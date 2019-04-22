@@ -2,7 +2,7 @@
 - name: Create objects only on the active DG member
   hosts: my_dg
 #  gather_facts: False
-#  connection: local
+  connection: local
 #  vars:
 #    provider:
 #      password: "{{ bigip_password }}"
