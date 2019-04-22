@@ -15,7 +15,7 @@
       bigip_device_facts:
         gather_subset: devices
         provider: "{{ provider }}"
-        port: 8443
+        server_port: 8443
       register: devices
 
 #    - block:
