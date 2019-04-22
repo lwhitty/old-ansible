@@ -5,9 +5,9 @@
   connection: local
   vars:
     provider:
-      password: "{{ ansible_env.ANSIBLE_NET_PASSWORD }}"
+      password: "{{ ANSIBLE_NET_PASSWORD }}"
       server: 192.168.132.108
-      username: "{{ ansible_env.ANSIBLE_NET_USERNAME }}"
+      username: "{{ ANSIBLE_NET_USERNAME }}"
       validate_certs: False
 
   tasks:
