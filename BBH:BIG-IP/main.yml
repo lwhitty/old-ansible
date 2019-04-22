@@ -6,8 +6,8 @@
   vars:
     provider:
       password: "{{ ansible_env.ANSIBLE_NET_PASSWORD }}"
-      server: "{{ ansible_host }}"
-      user: "{{ ansible_env.ANSIBLE_NET_USERNAME }}"
+      server: 192.168.132.108
+      username: "{{ ansible_env.ANSIBLE_NET_USERNAME }}"
       validate_certs: False
 
   tasks:
