@@ -1,45 +1,45 @@
 ---
 - name: Create objects only on the active DG member
-  hosts: my_dg
-  gather_facts: False
-  connection: local
-  vars:
-    provider:
-      password: "{{ bigip_password }}"
-      server: "{{ ansible_host }}"
-      user: "{{ bigip_username }}"
+#  hosts: my_dg
+#  gather_facts: False
+#  connection: local
+#  vars:
+#    provider:
+#      password: "{{ bigip_password }}"
+#      server: "{{ ansible_host }}"
+#      user: "{{ bigip_username }}"
       validate_certs: False
 
   tasks:
     - name: Collect bigip facts
       bigip_device_facts:
         gather_subset: devices
-        provider: "{{ provider }}"
+#        provider: "{{ provider }}"
       register: devices
 
     - block:
       - name: Create node1
         bigip_node:
-          provider: "{{ provider }}"
+#          provider: "{{ provider }}"
           host: "10.10.10.10"
           name: "10.10.10.10"
 
       - name: Create node2
         bigip_node:
-          provider: "{{ provider }}"
+#          provider: "{{ provider }}"
           host: "10.10.10.11"
           name: "10.10.10.11"
 
       - name: Create pool
         bigip_pool:
-          provider: "{{ provider }}"
+#          provider: "{{ provider }}"
           lb_method: "round-robin"
           monitors: http
           name: "pool1"
 
       - name: Add nodes to pool
         bigip_pool_member:
-          provider: "{{ provider }}"
+#          provider: "{{ provider }}"
           host: "{{ item.host }}"
           name: "{{ item.host }}"
           pool: "pool1"
@@ -50,7 +50,7 @@
 
       - name: Create a virtual server
         bigip_virtual_server:
-          provider: "{{ provider }}"
+#          provider: "{{ provider }}"
           name: "vip1"
           destination: "172.31.10.10"
           port: 80
@@ -66,7 +66,7 @@
   handlers:
     - name: Save the running configuration to disk
       bigip_config:
-        provider: "{{ provider }}"
+#       provider: "{{ provider }}"
         save: yes
 
     - name: Sync configuration from device to group
