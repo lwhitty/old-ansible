@@ -43,6 +43,7 @@
       - name: Add nodes to pool
         bigip_pool_member:
           provider: "{{ provider }}"
+          server_port: 8443          
           host: "{{ item.host }}"
           name: "{{ item.host }}"
           pool: "pool1"
