@@ -49,9 +49,9 @@
           pool: "{{ BIGIP_pool_name }}"
           port: "80"
         loop:
-          - host: "192.168.132.241"
-          - host: "192.168.132.242"
-          - host: "192.168.132.243"
+#          - host: "192.168.132.241"
+#         - host: "192.168.132.242"
+#          - host: "192.168.132.243"
       
 #      - name: Create a virtual server
 #        bigip_virtual_server:
