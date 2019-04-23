@@ -22,8 +22,8 @@
       - name: Create node1
         bigip_node:
           provider: "{{ provider }}"
-          host: "192.168.50.101"
-          name: "192.168.50.101"
+          host: "192.168.132.108"
+          name: "192.168.132.108"
 
 #      - name: Create node2
 #        bigip_node:
