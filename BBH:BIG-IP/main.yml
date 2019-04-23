@@ -15,7 +15,7 @@
       bigip_device_facts:
         gather_subset: devices
         provider: "{{ provider }}"
-        server_port: 8443
+#        server_port: 8443
       register: devices
 
     - block:
@@ -24,7 +24,7 @@
           provider: "{{ provider }}"
           host: "192.168.132.108"
           name: "192.168.132.108"
-          server_port: 8443
+#          server_port: 8443
 
 #      - name: Create node2
 #        bigip_node:
