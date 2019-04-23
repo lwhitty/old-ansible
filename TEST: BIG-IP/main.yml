@@ -40,17 +40,18 @@
           name: "pool1"
           server_port: 8443
 
-#      - name: Add nodes to pool
-#        bigip_pool_member:
-#          provider: "{{ provider }}"
-#          host: "{{ item.host }}"
-#          name: "{{ item.host }}"
-#          pool: "pool1"
-#          port: "80"
-#        loop:
-#          - host: "10.10.10.10"
-#          - host: "10.10.10.11"
-
+      - name: Add nodes to pool
+        bigip_pool_member:
+          provider: "{{ provider }}"
+          host: "{{ item.host }}"
+          name: "{{ item.host }}"
+          pool: "pool1"
+          port: "80"
+        loop:
+          - host: "192.168.132.241"
+          - host: "192.168.132.242"
+          - host: "192.168.132.243"
+      
 #      - name: Create a virtual server
 #        bigip_virtual_server:
 #          provider: "{{ provider }}"
