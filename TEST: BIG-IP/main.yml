@@ -22,9 +22,9 @@
       - name: Create node1
         bigip_node:
           provider: "{{ provider }}"
-          host: "192.168.132.108"
-          name: "192.168.132.108"
-          server_port: 8443
+          host: "{{ BIGIP_server }}"
+          name: "{{ BIGIP_server }}"
+          server_port: "{{ server_port }}"
 
 #      - name: Create node2
 #        bigip_node:
@@ -38,12 +38,12 @@
           lb_method: "round-robin"
           monitors: http
           name: "{{ BIGIP_pool_name }}"
-          server_port: 8443
+          server_port: "{{ server_port }}"
 
       - name: Add nodes to pool
         bigip_pool_member:
           provider: "{{ provider }}"
-          server_port: 8443          
+          server_port: "{{ server_port }}"         
 #          host: "{{ item.host }}"
 #          name: "{{ item.host }}"
           host: "{{ BIGIP_lb_host }}"
