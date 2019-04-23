@@ -52,7 +52,7 @@
           fqdn: "{{ mcms_test }}"
           name: "{{ mcms_test }}"
           pool: "{{ BIGIP_pool_name }}"
-          fqdn_auto_populate: yes
+          fqdn_auto_populate: no
           port: "80"
         loop: "{{ mcms_test }}"
 #        loop:
