@@ -44,16 +44,16 @@
         bigip_pool_member:
           provider: "{{ provider }}"
           server_port: 8443          
-#          host: "{{ item.host }}"
-#          name: "{{ item.host }}"
-          host: "{{ BIGIP_lb_host }}"
-          name: "{{ BIGIP_lb_host }}"
+          host: "{{ item.host }}"
+          name: "{{ item.host }}"
+#          host: "{{ BIGIP_lb_host }}"
+#          name: "{{ BIGIP_lb_host }}"
           pool: "{{ BIGIP_pool_name }}"
           port: "80"
         loop:
-#          - host: "192.168.132.241"
-#         - host: "192.168.132.242"
-#          - host: "192.168.132.243"
+          - host: "192.168.132.241"
+          - host: "192.168.132.242"
+          - host: "192.168.132.243"
       
 #      - name: Create a virtual server
 #        bigip_virtual_server:
