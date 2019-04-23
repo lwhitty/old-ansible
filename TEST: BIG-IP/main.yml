@@ -52,7 +52,7 @@
           name: "{{ mcms_test }}"
           pool: "{{ BIGIP_pool_name }}"
           port: "80"
-        loop: "{{ item.mcms_test }}"
+        loop: "{{ mcms_test }}"
 #        loop:
 #          - host: "192.168.132.241"
 #          - host: "192.168.132.242"
