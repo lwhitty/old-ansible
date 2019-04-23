@@ -7,7 +7,7 @@
     provider:
       password: "{{ BIGIP_password }}"
       server: 192.168.132.108
-      username: "{{ BIGIP_username }}"
+      user: "{{ BIGIP_username }}"
       validate_certs: False
 
   tasks:
