@@ -44,12 +44,12 @@
         bigip_pool_member:
           provider: "{{ provider }}"
           server_port: "{{ server_port }}"         
-          host: "{{ item.host }}"
-          name: "{{ item.host }}"
+#          host: "{{ item.host }}"
+#          name: "{{ item.host }}"
 #          host: "{{ BIGIP_lb_host }}"
 #          name: "{{ BIGIP_lb_host }}"
-#          host: "{{ mcms_test }}"
-#          name: "{{ mcms_test }}"
+          host: "{{ mcms_test }}"
+          name: "{{ mcms_test }}"
           pool: "{{ BIGIP_pool_name }}"
           reuse_nodes: yes
           port: "80"
