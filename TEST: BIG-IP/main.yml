@@ -38,6 +38,7 @@
           lb_method: "round-robin"
           monitors: http
           name: "pool1"
+          server_port: 8443
 
 #      - name: Add nodes to pool
 #        bigip_pool_member:
