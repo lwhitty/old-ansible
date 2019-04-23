@@ -48,7 +48,8 @@
 #          name: "{{ item.host }}"
 #          host: "{{ BIGIP_lb_host }}"
 #          name: "{{ BIGIP_lb_host }}"
-          host: "{{ mcms_test['address'] }}"
+#          host: "{{ mcms_test }}"
+          fqdn: "{{ mcms_test }}"
           name: "{{ mcms_test }}"
           pool: "{{ BIGIP_pool_name }}"
           reuse_nodes: no
