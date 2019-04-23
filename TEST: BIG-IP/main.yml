@@ -37,7 +37,7 @@
           provider: "{{ provider }}"
           lb_method: "round-robin"
           monitors: http
-          name: "pool1"
+          name: "{{ BIGIP_pool_name }}"
           server_port: 8443
 
       - name: Add nodes to pool
