@@ -46,7 +46,7 @@
           server_port: 8443          
           host: "{{ item.host }}"
           name: "{{ item.host }}"
-          pool: "pool1"
+          pool: "{{ BIGIP_pool_name }}"
           port: "80"
         loop:
           - host: "192.168.132.241"
