@@ -5,9 +5,9 @@
   connection: local
   vars:
     provider:
-      password: admin
+      password: "{{ BIGIP_PASSWORD }}"
       server: 192.168.132.108
-      user: admin
+      username: "{{ BIGIP_USERNAME }}"
       validate_certs: False
 
   tasks:
