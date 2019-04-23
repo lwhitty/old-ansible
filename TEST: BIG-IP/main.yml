@@ -32,12 +32,12 @@
 #          host: "10.10.10.11"
 #          name: "10.10.10.11"
 
-#      - name: Create pool
-#        bigip_pool:
-#          provider: "{{ provider }}"
-#          lb_method: "round-robin"
-#          monitors: http
-#          name: "pool1"
+      - name: Create pool
+        bigip_pool:
+          provider: "{{ provider }}"
+          lb_method: "round-robin"
+          monitors: http
+          name: "pool1"
 
 #      - name: Add nodes to pool
 #        bigip_pool_member:
