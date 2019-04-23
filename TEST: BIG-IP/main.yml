@@ -51,6 +51,7 @@
           host: "{{ mcms_test }}"
           name: "{{ mcms_test }}"
           pool: "{{ BIGIP_pool_name }}"
+          reuse_nodes: yes
           port: "80"
         loop: "{{ mcms_test }}"
 #        loop:
