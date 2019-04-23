@@ -6,7 +6,7 @@
   vars:
     provider:
       password: "{{ BIGIP_password }}"
-      server: 192.168.132.108
+      server: "{{ BIGIP_server }}"
       user: "{{ BIGIP_username }}"
       validate_certs: False
 
